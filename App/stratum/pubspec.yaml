@@ -1,0 +1,27 @@
+name: stratum
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  auto_size_text: ^3.0.0
+  curved_navigation_bar: ^1.0.6
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.2
+  flutter_expandable_fab: ^2.5.1
+  google_nav_bar: ^5.0.7
+  http: ^1.4.0
+  
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
