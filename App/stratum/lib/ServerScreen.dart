@@ -183,7 +183,7 @@ class _ServerDisplayState extends State<ServerDisplay> {
       case 1:
         return Serlog(ser: server);
       case 2:
-        return const SerMods();
+        return SerMods(server: server);
       default:
         return const SizedBox();
     }
@@ -594,8 +594,10 @@ class _ConsoleState extends State<Console> {
 
     // Call the external function to fetch logs using the loaded credentials and server name.
     final logsRaw = await ServLogs(url, password, widget.ser.name!);
+    print(logsRaw.map((e) => e.toString()).toList());
     // Convert all entries to String
     return logsRaw.map((e) => e.toString()).toList();
+    
   }
 
   /// Manual refresh function
@@ -772,8 +774,8 @@ class _ConsoleState extends State<Console> {
 }
 
 class SerMods extends StatefulWidget {
-  const SerMods({super.key});
-
+  const SerMods({super.key, required this.server});
+  final Server server;
   @override
   State<SerMods> createState() => _SerModsState();
 }
@@ -781,12 +783,9 @@ class SerMods extends StatefulWidget {
 class _SerModsState extends State<SerMods> {
   @override
   Widget build(BuildContext context) {
-    return Animate(
+    return widget.server.loader == "paper"? Animate(
       effects: [FadeEffect()],
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Center(child: Text('Mods')),
-      ),
-    );
+      child: Text('Mods'),
+    ) : Center(child: Text("Mods are only supported on paper"),);
   }
 }

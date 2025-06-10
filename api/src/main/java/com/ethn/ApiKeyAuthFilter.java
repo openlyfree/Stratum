@@ -11,7 +11,7 @@ import jakarta.ws.rs.ext.Provider;
 public class ApiKeyAuthFilter implements ContainerRequestFilter {
 
     private static final String API_KEY_HEADER = "Key"; // The name of your API key header
-
+//TODO:ADD PASSWORD.txt reading stuff
     
     String validApiKey = "adminaccesskey789";
 

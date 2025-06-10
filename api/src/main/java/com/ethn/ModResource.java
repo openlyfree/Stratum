@@ -1,26 +1,29 @@
 package com.ethn;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import io.quarkus.websockets.next.OnOpen;
+import io.quarkus.websockets.next.OnTextMessage;
+import io.quarkus.websockets.next.PathParam;
+import io.quarkus.websockets.next.WebSocket;
+import io.quarkus.websockets.next.WebSocketConnection;
+import jakarta.inject.Inject;
 
-
+@WebSocket(path = "/mods/{server}")
 public class ModResource {
+    @Inject
+    WebSocketConnection connection;
 
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<String> mods() {
-        ArrayList<String> mod = new ArrayList<String>();
+    @OnOpen
+    void OnOpen(@PathParam("server") String name){
         
-
-
-        return mod;
     }
+
+    @OnTextMessage
+    void onTextMessage(String message, @PathParam("server") String name) {
+        
+    }
+
 
   
 }
